@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19119FEE1993903600B67B3D /* checkbox-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FE91993903600B67B3D /* checkbox-pressed.png */; };
+		19119FEF1993903600B67B3D /* checkbox-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FEA1993903600B67B3D /* checkbox-checked.png */; };
+		19119FF01993903600B67B3D /* checkbox-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FEB1993903600B67B3D /* checkbox-checked@2x.png */; };
+		19119FF11993903600B67B3D /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FEC1993903600B67B3D /* checkbox.png */; };
+		19119FF21993903600B67B3D /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FED1993903600B67B3D /* checkbox@2x.png */; };
+		199AE680199662820087CC89 /* quantity.m in Sources */ = {isa = PBXBuildFile; fileRef = 199AE67F199662820087CC89 /* quantity.m */; };
 		19DA342C196EE8220081D2FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DA342B196EE8220081D2FF /* Foundation.framework */; };
 		19DA342E196EE8220081D2FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DA342D196EE8220081D2FF /* CoreGraphics.framework */; };
 		19DA3430196EE8220081D2FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DA342F196EE8220081D2FF /* UIKit.framework */; };
@@ -21,6 +27,19 @@
 		19DA344D196EE8220081D2FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DA342F196EE8220081D2FF /* UIKit.framework */; };
 		19DA3455196EE8220081D2FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19DA3453196EE8220081D2FF /* InfoPlist.strings */; };
 		19DA3457196EE8220081D2FF /* Food_ApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3456196EE8220081D2FF /* Food_ApplicationTests.m */; };
+		19DA3462196EEDD00081D2FF /* countries.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3461196EEDD00081D2FF /* countries.m */; };
+		19DA3465196EEE150081D2FF /* login.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3464196EEE150081D2FF /* login.m */; };
+		19DA3468196EEE680081D2FF /* newUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3467196EEE680081D2FF /* newUser.m */; };
+		19DA346B196EEE830081D2FF /* vendors.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA346A196EEE830081D2FF /* vendors.m */; };
+		19DA346E196EEEA40081D2FF /* menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA346D196EEEA40081D2FF /* menu.m */; };
+		19DA3471196EEEC00081D2FF /* payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3470196EEEC00081D2FF /* payment.m */; };
+		19DA3474196EEEDD0081D2FF /* paymentConfirmation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3473196EEEDD0081D2FF /* paymentConfirmation.m */; };
+		19DA3477196EEEF80081D2FF /* congratulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DA3476196EEEF80081D2FF /* congratulations.m */; };
+		19E4B0B4197471C6001465BD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E4B0B2197471C6001465BD /* SWRevealViewController.m */; };
+		19E4B0B7197471EA001465BD /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E4B0B6197471EA001465BD /* SidebarViewController.m */; };
+		DC21CE4A197138A800D29F18 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = DC21CE49197138A800D29F18 /* WebService.m */; };
+		DC21CE4D19713EFC00D29F18 /* checkInternet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC21CE4C19713EFC00D29F18 /* checkInternet.m */; };
+		DC21CE511971451A00D29F18 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC21CE501971451A00D29F18 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19119FE91993903600B67B3D /* checkbox-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-pressed.png"; sourceTree = "<group>"; };
+		19119FEA1993903600B67B3D /* checkbox-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-checked.png"; sourceTree = "<group>"; };
+		19119FEB1993903600B67B3D /* checkbox-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-checked@2x.png"; sourceTree = "<group>"; };
+		19119FEC1993903600B67B3D /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		19119FED1993903600B67B3D /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
+		199AE67E199662820087CC89 /* quantity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quantity.h; sourceTree = "<group>"; };
+		199AE67F199662820087CC89 /* quantity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = quantity.m; sourceTree = "<group>"; };
 		19DA3428196EE8220081D2FF /* Food Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DA342B196EE8220081D2FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19DA342D196EE8220081D2FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +79,33 @@
 		19DA3452196EE8220081D2FF /* Food ApplicationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Food ApplicationTests-Info.plist"; sourceTree = "<group>"; };
 		19DA3454196EE8220081D2FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19DA3456196EE8220081D2FF /* Food_ApplicationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Food_ApplicationTests.m; sourceTree = "<group>"; };
+		19DA3460196EEDD00081D2FF /* countries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = countries.h; sourceTree = "<group>"; };
+		19DA3461196EEDD00081D2FF /* countries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = countries.m; sourceTree = "<group>"; };
+		19DA3463196EEE150081D2FF /* login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = login.h; sourceTree = "<group>"; };
+		19DA3464196EEE150081D2FF /* login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = login.m; sourceTree = "<group>"; };
+		19DA3466196EEE680081D2FF /* newUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newUser.h; sourceTree = "<group>"; };
+		19DA3467196EEE680081D2FF /* newUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newUser.m; sourceTree = "<group>"; };
+		19DA3469196EEE830081D2FF /* vendors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vendors.h; sourceTree = "<group>"; };
+		19DA346A196EEE830081D2FF /* vendors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vendors.m; sourceTree = "<group>"; };
+		19DA346C196EEEA40081D2FF /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = menu.h; path = ../menu.h; sourceTree = "<group>"; };
+		19DA346D196EEEA40081D2FF /* menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = menu.m; path = ../menu.m; sourceTree = "<group>"; };
+		19DA346F196EEEC00081D2FF /* payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payment.h; sourceTree = "<group>"; };
+		19DA3470196EEEC00081D2FF /* payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = payment.m; sourceTree = "<group>"; };
+		19DA3472196EEEDD0081D2FF /* paymentConfirmation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paymentConfirmation.h; sourceTree = "<group>"; };
+		19DA3473196EEEDD0081D2FF /* paymentConfirmation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = paymentConfirmation.m; sourceTree = "<group>"; };
+		19DA3475196EEEF80081D2FF /* congratulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = congratulations.h; sourceTree = "<group>"; };
+		19DA3476196EEEF80081D2FF /* congratulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = congratulations.m; sourceTree = "<group>"; };
+		19E4B0B2197471C6001465BD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		19E4B0B3197471C6001465BD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		19E4B0B5197471EA001465BD /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		19E4B0B6197471EA001465BD /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		DC21CE48197138A800D29F18 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
+		DC21CE49197138A800D29F18 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
+		DC21CE4B19713EFC00D29F18 /* checkInternet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkInternet.h; sourceTree = "<group>"; };
+		DC21CE4C19713EFC00D29F18 /* checkInternet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkInternet.m; sourceTree = "<group>"; };
+		DC21CE4E197140DD00D29F18 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DC21CE4F1971451A00D29F18 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DC21CE501971451A00D29F18 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +132,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19119FE81993901D00B67B3D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				19119FE91993903600B67B3D /* checkbox-pressed.png */,
+				19119FEA1993903600B67B3D /* checkbox-checked.png */,
+				19119FEB1993903600B67B3D /* checkbox-checked@2x.png */,
+				19119FEC1993903600B67B3D /* checkbox.png */,
+				19119FED1993903600B67B3D /* checkbox@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		19DA341F196EE8220081D2FF = {
 			isa = PBXGroup;
 			children = (
@@ -112,12 +177,41 @@
 		19DA3431196EE8220081D2FF /* Food Application */ = {
 			isa = PBXGroup;
 			children = (
+				19119FE81993901D00B67B3D /* images */,
+				19DA343D196EE8220081D2FF /* Main.storyboard */,
+				DC21CE48197138A800D29F18 /* WebService.h */,
+				DC21CE49197138A800D29F18 /* WebService.m */,
 				19DA343A196EE8220081D2FF /* AppDelegate.h */,
 				19DA343B196EE8220081D2FF /* AppDelegate.m */,
-				19DA343D196EE8220081D2FF /* Main.storyboard */,
 				19DA3440196EE8220081D2FF /* ViewController.h */,
 				19DA3441196EE8220081D2FF /* ViewController.m */,
+				DC21CE4E197140DD00D29F18 /* Constants.h */,
+				DC21CE4F1971451A00D29F18 /* Reachability.h */,
+				DC21CE501971451A00D29F18 /* Reachability.m */,
+				DC21CE4B19713EFC00D29F18 /* checkInternet.h */,
+				DC21CE4C19713EFC00D29F18 /* checkInternet.m */,
+				19DA3460196EEDD00081D2FF /* countries.h */,
+				19DA3461196EEDD00081D2FF /* countries.m */,
+				19DA3463196EEE150081D2FF /* login.h */,
+				19DA3464196EEE150081D2FF /* login.m */,
+				19DA3466196EEE680081D2FF /* newUser.h */,
+				19DA3467196EEE680081D2FF /* newUser.m */,
+				19DA3469196EEE830081D2FF /* vendors.h */,
+				19DA346A196EEE830081D2FF /* vendors.m */,
+				19DA346C196EEEA40081D2FF /* menu.h */,
+				19DA346D196EEEA40081D2FF /* menu.m */,
+				199AE67E199662820087CC89 /* quantity.h */,
+				199AE67F199662820087CC89 /* quantity.m */,
+				19DA346F196EEEC00081D2FF /* payment.h */,
+				19DA3470196EEEC00081D2FF /* payment.m */,
+				19DA3472196EEEDD0081D2FF /* paymentConfirmation.h */,
+				19DA3473196EEEDD0081D2FF /* paymentConfirmation.m */,
+				19DA3475196EEEF80081D2FF /* congratulations.h */,
+				19DA3476196EEEF80081D2FF /* congratulations.m */,
+				19E4B0B5197471EA001465BD /* SidebarViewController.h */,
+				19E4B0B6197471EA001465BD /* SidebarViewController.m */,
 				19DA3443196EE8220081D2FF /* Images.xcassets */,
+				19E4B0B1197471B3001465BD /* Library */,
 				19DA3432196EE8220081D2FF /* Supporting Files */,
 			);
 			path = "Food Application";
@@ -150,6 +244,15 @@
 				19DA3453196EE8220081D2FF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19E4B0B1197471B3001465BD /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				19E4B0B2197471C6001465BD /* SWRevealViewController.m */,
+				19E4B0B3197471C6001465BD /* SWRevealViewController.h */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +332,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				19DA3444196EE8220081D2FF /* Images.xcassets in Resources */,
+				19119FEE1993903600B67B3D /* checkbox-pressed.png in Resources */,
+				19119FEF1993903600B67B3D /* checkbox-checked.png in Resources */,
+				19119FF21993903600B67B3D /* checkbox@2x.png in Resources */,
+				19119FF01993903600B67B3D /* checkbox-checked@2x.png in Resources */,
 				19DA3436196EE8220081D2FF /* InfoPlist.strings in Resources */,
 				19DA343F196EE8220081D2FF /* Main.storyboard in Resources */,
+				19119FF11993903600B67B3D /* checkbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +358,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				19DA3442196EE8220081D2FF /* ViewController.m in Sources */,
+				199AE680199662820087CC89 /* quantity.m in Sources */,
 				19DA343C196EE8220081D2FF /* AppDelegate.m in Sources */,
+				19E4B0B4197471C6001465BD /* SWRevealViewController.m in Sources */,
+				19DA3465196EEE150081D2FF /* login.m in Sources */,
+				19DA3477196EEEF80081D2FF /* congratulations.m in Sources */,
+				DC21CE4D19713EFC00D29F18 /* checkInternet.m in Sources */,
+				19DA3468196EEE680081D2FF /* newUser.m in Sources */,
+				19DA3462196EEDD00081D2FF /* countries.m in Sources */,
+				DC21CE4A197138A800D29F18 /* WebService.m in Sources */,
+				19DA3471196EEEC00081D2FF /* payment.m in Sources */,
+				19DA346B196EEE830081D2FF /* vendors.m in Sources */,
+				19E4B0B7197471EA001465BD /* SidebarViewController.m in Sources */,
+				DC21CE511971451A00D29F18 /* Reachability.m in Sources */,
+				19DA3474196EEEDD0081D2FF /* paymentConfirmation.m in Sources */,
+				19DA346E196EEEA40081D2FF /* menu.m in Sources */,
 				19DA3438196EE8220081D2FF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +582,7 @@
 				19DA345C196EE8220081D2FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19DA345D196EE8220081D2FF /* Build configuration list for PBXNativeTarget "Food ApplicationTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +591,7 @@
 				19DA345F196EE8220081D2FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
