@@ -8,7 +8,7 @@
 
 #import "vendors.h"
 #import "SWRevealViewController.h"
-#import "menu.h"
+#import "menuList.h"
 #import "Constants.h"
 #import "WebService.h"
 
@@ -133,7 +133,7 @@
                 
                 [button setBackgroundImage:img forState:UIControlStateNormal];
                 button.frame = CGRectMake(x,y,100,100);
-                button.tag = value-1;
+                button.tag = value;
                 [scroll addSubview:button];
                 [image_loading stopAnimating];
                 // here, spinner for that image view will be removed.
@@ -199,7 +199,30 @@
 -(void)tapDetected:(id)sender{
 
     button = (UIButton*) sender;
-    vendor_id = [[VendorsNearMe valueForKey:@"vendor_id"] objectAtIndex:button.tag];
+    
+    NSString *tag = [NSString stringWithFormat: @"%d", (int)button.tag];;
+    NSLog(@"tag: %@",tag);
+    
+    for(NSDictionary *item in VendorsNearMe)
+    {
+        NSLog(@" item: %@", item);
+        
+        bool foundMatch = NO;
+        
+        if(foundMatch == NO)
+        {
+            if([[item valueForKey:@"vendor_id"] isEqualToString:tag])
+            {
+                //[SecondViewController.friendWhoUseAppStaticFunction removeObject:item];
+                NSLog(@"Found Object  %@", item);
+                foundMatch = YES;
+                vendor_id = [item valueForKey:@"vendor_id"];
+                
+            }
+        }
+    }
+    
+    //vendor_id = [[VendorsNearMe valueForKey:@"vendor_id"] objectAtIndex:button.tag];
     [self performSegueWithIdentifier:@"menutime" sender:self];
     NSLog(@"single Tap on imageview");
     
@@ -214,7 +237,8 @@
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
     if ([segue.identifier isEqualToString:@"menutime"]) {
-        menu *m = (menu*)segue.destinationViewController;
+        menuList *m = (menuList*)segue.destinationViewController;
+        
         m.title = @"Vendor Name";
         m.vendorId = vendor_id;
     }

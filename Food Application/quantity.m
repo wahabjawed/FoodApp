@@ -13,6 +13,7 @@
 @end
 
 @implementation quantity
+static NSMutableArray* theArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if(theArray == nil){
+        theArray = [[NSMutableArray alloc]init];
+    }
 
     self.product_name.text = self.prod_name;
     
@@ -38,6 +43,11 @@
     quantit = [@"Quantity " stringByAppendingString:quanti];
     self.quan.text = quantit;
     
+}
+
++(NSMutableArray*) myBasketArray
+{
+    return theArray;
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,6 +100,12 @@
 
 }
 - (IBAction)addToBasket:(id)sender {
+    
+    NSMutableDictionary *testing = [[NSMutableDictionary alloc]init];
+    [testing setValue:self.product_name.text forKey:@"product_name"];
+    [testing setValue:self.totalPrice.text forKey:@"product_price"];
+    
+    [theArray addObject:testing];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

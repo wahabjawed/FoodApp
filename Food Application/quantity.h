@@ -27,6 +27,8 @@
 @property (strong,nonatomic) NSString *prod_price;
 @property (weak, nonatomic) IBOutlet UIButton *basket;
 
++(NSMutableArray*) myBasketArray;
+
 - (IBAction)addToBasket:(id)sender;
 
 
