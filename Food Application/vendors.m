@@ -217,7 +217,7 @@
                 NSLog(@"Found Object  %@", item);
                 foundMatch = YES;
                 vendor_id = [item valueForKey:@"vendor_id"];
-                
+                NSLog(@" selected vendor id is: %@",vendor_id);
             }
         }
     }

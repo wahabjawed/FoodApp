@@ -58,7 +58,7 @@ UIPopoverController *splitters;
     dollar_rem_amount = [@"$" stringByAppendingString:rem_amount];
     self.remainingAmount.text = dollar_rem_amount;
     
-    toPayAmount = 200;
+    toPayAmount = 0;
     
     owed_amount = [NSString stringWithFormat:@"%i", toPayAmount];
     dollar_owed_amount = [@"$" stringByAppendingString:owed_amount];
@@ -177,11 +177,18 @@ UIPopoverController *splitters;
         
         cell.textLabel.text = [[[quantity myBasketArray] valueForKey:@"product_name"] objectAtIndex:indexPath.row];
         
-        UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(190, 12, 140, 20)];
+        UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(240, 12, 140, 20)];
         price.text = [[[quantity myBasketArray] valueForKey:@"product_price"] objectAtIndex:indexPath.row];
         price.textColor = [UIColor blueColor];
-
+        
+        toPayAmount = toPayAmount + [price.text intValue];
+        
+        self.amountOwed.text = price.text;
         [cell addSubview:price];
+        
+        owed_amount = [NSString stringWithFormat:@"%i", toPayAmount];
+        dollar_owed_amount = [@"$" stringByAppendingString:owed_amount];
+        self.amountOwed.text = dollar_owed_amount;
         return cell;
     }
     return cell;
@@ -189,15 +196,27 @@ UIPopoverController *splitters;
 
 - (void)textFieldDidChange:(UITextField *)sender{
     
+    
+    //getting the tag to update particular textfeild
     toPay = (UITextField *) sender;
     NSString *tag = [NSString stringWithFormat: @"%d", (int)toPay.tag];
     NSLog(@"tag: %@",tag);
     
-    NSString *temp_value = toPay.text;
     
+    //updating the entered value
+    NSString *temp_value = toPay.text;
     [[users objectAtIndex:toPay.tag] setValue:temp_value forKey:@"user_amount"];
     
-    if([toPay.text intValue] > original_amount)
+    int collection=0;
+    for(int i =0; i<[users count]; i++){
+        NSString *collective_amount = [[users valueForKey:@"user_amount"] objectAtIndex:i];
+       collection  = collection + [collective_amount intValue];
+        
+        NSLog(@"The collective amount is: %i",collection);
+    }
+    
+    //value testing
+    if(collection > original_amount)
     {
         amount = original_amount;
         error_alert =[[UIAlertView alloc ] initWithTitle:@"title" message:@"this is msg" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
@@ -206,7 +225,7 @@ UIPopoverController *splitters;
     }
     else
     {
-        amount = original_amount - [toPay.text intValue];
+        amount = original_amount - collection;
     }
         rem_amount = [NSString stringWithFormat:@"%i", amount];
         dollar_rem_amount = [@"$" stringByAppendingString:rem_amount];

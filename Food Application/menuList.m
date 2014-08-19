@@ -21,7 +21,7 @@
     NSString *product_price;
     NSString *product_name;
     NSString *ProductImagePath;
-    NSString * product_id;
+    NSString *product_id;
     UIButton *button;
 }
 
@@ -42,19 +42,8 @@
     
     self.proceed.layer.cornerRadius = 7;
     self.proceed.clipsToBounds = YES;
-    
-    dispatch_queue_t myqueue = dispatch_queue_create("myqueue", NULL);
-    dispatch_async(myqueue, ^(void) {
-        
-                [self FetchProductsList];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update UI on main queue
             
-            [self.product_table reloadData];
-        });
-        
-    });
+            [self FetchProductsList];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -73,7 +62,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
     return 1;
 }
@@ -92,14 +80,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     // Return the number of rows in the section.
     return [AllProductsOfVendor count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"Selected row of section >> %d",indexPath.row);
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,10 +138,14 @@
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
     // Set the title of navigation bar by using the menu items
-    //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     if ([segue.identifier isEqualToString:@"defineQuantity"]) {
         quantity *q = (quantity*)segue.destinationViewController;
+        
+        product_price = [[AllProductsOfVendor valueForKey:@"product_price"] objectAtIndex:indexPath.row];
+        product_name = [[AllProductsOfVendor valueForKey:@"product_name"] objectAtIndex:indexPath.row];
+        
         q.prod_name = product_name;
         q.prod_price = product_price;
     }
