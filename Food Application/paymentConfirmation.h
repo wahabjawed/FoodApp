@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface paymentConfirmation : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *Address;
 @property (weak, nonatomic) IBOutlet UIButton *Confirm;
 @property (weak, nonatomic) IBOutlet UILabel *Amount;
-
+@property (weak,nonatomic) NSString *finalAmount;
+-(CLLocationCoordinate2D) getLocationFromAddressString:(NSString*) addressStr;
++(NSMutableArray *) tokensArray;
 @end

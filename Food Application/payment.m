@@ -8,6 +8,9 @@
 
 #import "payment.h"
 #import "quantity.h"
+#import "WebService.h"
+#import "Constants.h"
+#import "paymentConfirmation.h"
 
 @interface payment (){
 UIPopoverController *splitters;
@@ -15,7 +18,7 @@ UIPopoverController *splitters;
 @end
 
 @implementation payment{
-    NSMutableArray *users;
+    
     UIAlertView *error_alert;
     UIAlertView *alert;
     UITextField *toPay;
@@ -24,6 +27,8 @@ UIPopoverController *splitters;
     NSMutableArray *user_amounts;
     
 }
+static NSMutableArray *users;
+static NSMutableArray *creditCardDetails;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +39,16 @@ UIPopoverController *splitters;
     return self;
 }
 
++(NSMutableArray *) CreditCardArray{
+    return creditCardDetails;
+}
+
+- (IBAction)payNow:(id)sender {
+    
+    [self performSegueWithIdentifier:@"confirmThePayment" sender:self];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,6 +56,8 @@ UIPopoverController *splitters;
     users = [[NSMutableArray alloc]init];
     user_amounts = [[NSMutableArray alloc]init];
     self.title = @"Payment";
+    
+    creditCardDetails = [[NSMutableArray alloc]init];
     
     notificationCenter = [NSNotificationCenter defaultCenter];
     
@@ -52,27 +69,24 @@ UIPopoverController *splitters;
     
     [error_alert setAlertViewStyle:UIAlertViewStyleDefault];
     
-    amount = 200;
-    original_amount = amount;
-    rem_amount = [NSString stringWithFormat:@"%i", amount];
-    dollar_rem_amount = [@"$" stringByAppendingString:rem_amount];
-    self.remainingAmount.text = dollar_rem_amount;
-    
     toPayAmount = 0;
     
     owed_amount = [NSString stringWithFormat:@"%i", toPayAmount];
     dollar_owed_amount = [@"$" stringByAppendingString:owed_amount];
     self.amountOwed.text = dollar_owed_amount;
     
-    alert =[[UIAlertView alloc ] initWithTitle:@"Payment Splitting" message:@"Add a Freind" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
+    alert =[[UIAlertView alloc ] initWithTitle:@"Add a friend" message:@"Add 3 digit CVC number with Hyphen seperated" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: nil];
     
     [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-    UITextField *userName = [alert textFieldAtIndex:0];
+    UITextField *userDate = [alert textFieldAtIndex:0];
+    [userDate setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
 
-    userName.placeholder=@"Freind Name";
+    userDate.placeholder=@"mm/yy";
     [[alert textFieldAtIndex:1] setSecureTextEntry:NO];
+    
     UITextField *cardNumber= [alert textFieldAtIndex:1];
-    cardNumber.placeholder=@"Credit Card Number";
+        [cardNumber setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    cardNumber.placeholder=@"Credit Card Number - CVC Number";
     [alert addButtonWithTitle:@"Done"];
     
 }
@@ -82,19 +96,28 @@ UIPopoverController *splitters;
     NSLog(@"Button Index =%d",buttonIndex);
     if (buttonIndex == 1) {  //Login
         UITextField *username = [alertView textFieldAtIndex:0];
-        //NSLog(@"username: %@", username);
-        
         UITextField *userCard = [alertView textFieldAtIndex:1];
-        NSString *name = username.text;
+        
+        NSString *date = username.text;
+        NSArray *enteredDate = [date componentsSeparatedByString: @"/"];
+        NSString *month = [enteredDate objectAtIndex: 0];
+        NSString *Year = [enteredDate objectAtIndex: 1];
         
         NSString *number = userCard.text;
+        NSArray *enteredNumber = [number componentsSeparatedByString: @"-"];
+        NSString *creditCard = [enteredNumber objectAtIndex: 0];
+        NSString *CVC = [enteredNumber objectAtIndex: 1];
         
         NSMutableDictionary *testing = [[NSMutableDictionary alloc]init];
-        [testing setValue:name forKey:@"user_name"];
-        [testing setValue:number forKey:@"user_number"];
-        [testing setValue:@"" forKey:@"user_amount"];
-        [users addObject:testing];
+        [testing setValue:month forKey:@"user_month"];
+        [testing setValue:Year forKey:@"user_year"];
+        [testing setValue:creditCard forKey:@"user_number"];
+        [testing setValue:CVC forKey:@"user_cvc"];
+        [testing setValue:@"100" forKey:@"user_amount"];
         
+        [creditCardDetails addObject:testing];
+        [users addObject:testing];
+
         username.text = nil;
         userCard.text = nil;
 
@@ -136,18 +159,30 @@ UIPopoverController *splitters;
 {
     // NSLog(@"Index: %@ ",indexPath.row);
     static NSString *simpleTableIdentifierr = @"SimpleTableCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierr];
+    UITableViewCell *cell;
     
     if(tableView == self.personsTable){
     
         if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifierr];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifierr];
         }
     
-    cell.textLabel.text = [[users valueForKey:@"user_name"] objectAtIndex:indexPath.row];
-    
-    UILabel *creditCardNumber = [[UILabel alloc]initWithFrame:CGRectMake(80, 16, 140, 12)];
-    creditCardNumber.text = [[users valueForKey:@"user_number"] objectAtIndex:indexPath.row];
+    NSString *CcN = [[users valueForKey:@"user_number"] objectAtIndex:indexPath.row];
+    NSString *Cvc = [[users valueForKey:@"user_cvc"] objectAtIndex:indexPath.row];
+    NSString *month = [[users valueForKey:@"user_month"] objectAtIndex:indexPath.row];
+    NSString *year = [[users valueForKey:@"user_year"] objectAtIndex:indexPath.row];
+        NSLog(@"the CcN is %@",CcN);
+        NSLog(@"the Cvc is %@",Cvc);
+        NSLog(@"the month is %@",month);
+        NSLog(@"the year is %@",year);
+        
+        cell.textLabel.text = [month stringByAppendingString:year];
+    UILabel *creditCardNumber = [[UILabel alloc]initWithFrame:CGRectMake(60, 16, 150, 12)];
+        
+    creditCardNumber.text = [CcN stringByAppendingString:Cvc];
+        
+        NSLog(@"The CVC number is %@",[[users valueForKey:@"user_cvc"] objectAtIndex:indexPath.row]);
+        
     creditCardNumber.textColor = [UIColor blueColor];
     
     toPay = [[UITextField alloc]initWithFrame:CGRectMake(230, 10, 50, 24)];
@@ -177,7 +212,7 @@ UIPopoverController *splitters;
         
         cell.textLabel.text = [[[quantity myBasketArray] valueForKey:@"product_name"] objectAtIndex:indexPath.row];
         
-        UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(240, 12, 140, 20)];
+        UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(260, 12, 140, 20)];
         price.text = [[[quantity myBasketArray] valueForKey:@"product_price"] objectAtIndex:indexPath.row];
         price.textColor = [UIColor blueColor];
         
@@ -189,19 +224,22 @@ UIPopoverController *splitters;
         owed_amount = [NSString stringWithFormat:@"%i", toPayAmount];
         dollar_owed_amount = [@"$" stringByAppendingString:owed_amount];
         self.amountOwed.text = dollar_owed_amount;
+        
+        amount = toPayAmount;
+        original_amount = amount;
+        rem_amount = [NSString stringWithFormat:@"%i", amount];
+        dollar_rem_amount = [@"$" stringByAppendingString:rem_amount];
+        self.remainingAmount.text = dollar_rem_amount;
         return cell;
     }
-    return cell;
 }
 
 - (void)textFieldDidChange:(UITextField *)sender{
-    
     
     //getting the tag to update particular textfeild
     toPay = (UITextField *) sender;
     NSString *tag = [NSString stringWithFormat: @"%d", (int)toPay.tag];
     NSLog(@"tag: %@",tag);
-    
     
     //updating the entered value
     NSString *temp_value = toPay.text;
@@ -219,7 +257,7 @@ UIPopoverController *splitters;
     if(collection > original_amount)
     {
         amount = original_amount;
-        error_alert =[[UIAlertView alloc ] initWithTitle:@"title" message:@"this is msg" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
+        error_alert =[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You have exceeded the total amount" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
         [error_alert show];
         
     }
@@ -231,7 +269,6 @@ UIPopoverController *splitters;
         dollar_rem_amount = [@"$" stringByAppendingString:rem_amount];
         self.remainingAmount.text = dollar_rem_amount;
         [toPay resignFirstResponder];
-    
 }
 
 - (IBAction)addUser:(id)sender {
@@ -243,6 +280,19 @@ UIPopoverController *splitters;
         if ([txt isKindOfClass:[UITextField class]] && [txt isFirstResponder]) {
             [txt resignFirstResponder];
         }
+    }
+}
+
++(NSMutableArray *) usersArray{
+    return users;
+}
+
+- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+{
+    
+    if ([segue.identifier isEqualToString:@"confirmThePayment"]) {
+        paymentConfirmation *p = (paymentConfirmation*)segue.destinationViewController;
+        p.finalAmount = [NSString stringWithFormat:@"%d",106];
     }
 }
 

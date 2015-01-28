@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *amountOwed;
 @property (weak, nonatomic) IBOutlet UIButton *addUser;
 - (IBAction)addUser:(id)sender;
-
++(NSMutableArray *) CreditCardArray;
+- (IBAction)payNow:(id)sender;
++(NSMutableArray *) usersArray;
 
 @end

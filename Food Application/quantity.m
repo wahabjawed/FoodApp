@@ -7,13 +7,18 @@
 //
 
 #import "quantity.h"
+#import "menuList.h"
+
 
 @interface quantity ()
 
 @end
 
-@implementation quantity
-static NSMutableArray* theArray;
+@implementation quantity{
+    
+}
+static NSMutableArray* vendor_items_array;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,8 +33,8 @@ static NSMutableArray* theArray;
 {
     [super viewDidLoad];
     
-    if(theArray == nil){
-        theArray = [[NSMutableArray alloc]init];
+    if(vendor_items_array == nil){
+        vendor_items_array = [[NSMutableArray alloc]init];
     }
 
     self.product_name.text = self.prod_name;
@@ -47,7 +52,7 @@ static NSMutableArray* theArray;
 
 +(NSMutableArray*) myBasketArray
 {
-    return theArray;
+    return vendor_items_array;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,7 +84,7 @@ static NSMutableArray* theArray;
     
     final = quant * basic;
     
-    finalPrice = [NSString stringWithFormat:@"%i", final];
+    finalPrice = [NSString stringWithFormat:@"%f", final];
     self.totalPrice.text = finalPrice;
 
 }
@@ -93,19 +98,22 @@ static NSMutableArray* theArray;
     quantit = [@"Quantity " stringByAppendingString:quanti];
     self.quan.text = quantit;
     
-        final = quant * basic;
     
-    finalPrice = [NSString stringWithFormat:@"%i", final];
+        final = quant * basic;
+    NSLog(@"The price is %f",final);
+    finalPrice = [NSString stringWithFormat:@"%.2f", final];
     self.totalPrice.text = finalPrice;
 
 }
 - (IBAction)addToBasket:(id)sender {
     
-    NSMutableDictionary *testing = [[NSMutableDictionary alloc]init];
-    [testing setValue:self.product_name.text forKey:@"product_name"];
-    [testing setValue:self.totalPrice.text forKey:@"product_price"];
+    NSMutableDictionary *item = [[NSMutableDictionary alloc]init];
+    [item setValue:self.product_name.text forKey:@"product_name"];
+    [item setValue:self.totalPrice.text forKey:@"product_price"];
+    [item setValue:self.prod_vendor_id forKey:@"Vendor_id"];
+    [item setValue:self.prod_item_id forKey:@"Item_id"];
     
-    [theArray addObject:testing];
+    [vendor_items_array addObject:item];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

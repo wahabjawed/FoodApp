@@ -12,6 +12,12 @@
 		19119FF01993903600B67B3D /* checkbox-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FEB1993903600B67B3D /* checkbox-checked@2x.png */; };
 		19119FF11993903600B67B3D /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FEC1993903600B67B3D /* checkbox.png */; };
 		19119FF21993903600B67B3D /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19119FED1993903600B67B3D /* checkbox@2x.png */; };
+		19695E1919BDD04C00C05D03 /* STPAPIConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 19695E0C19BDD04C00C05D03 /* STPAPIConnection.m */; };
+		19695E1A19BDD04C00C05D03 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 19695E0E19BDD04C00C05D03 /* STPCard.m */; };
+		19695E1B19BDD04C00C05D03 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 19695E1119BDD04C00C05D03 /* STPToken.m */; };
+		19695E1C19BDD04C00C05D03 /* STPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19695E1319BDD04C00C05D03 /* STPUtils.m */; };
+		19695E1D19BDD04C00C05D03 /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 19695E1619BDD04C00C05D03 /* Stripe.m */; };
+		19695E1E19BDD04C00C05D03 /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 19695E1819BDD04C00C05D03 /* StripeError.m */; };
 		199AE680199662820087CC89 /* quantity.m in Sources */ = {isa = PBXBuildFile; fileRef = 199AE67F199662820087CC89 /* quantity.m */; };
 		19B3F38919A0A1AA00158D81 /* menuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3F38819A0A1AA00158D81 /* menuList.m */; };
 		19DA342C196EE8220081D2FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DA342B196EE8220081D2FF /* Foundation.framework */; };
@@ -58,6 +64,20 @@
 		19119FEB1993903600B67B3D /* checkbox-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-checked@2x.png"; sourceTree = "<group>"; };
 		19119FEC1993903600B67B3D /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		19119FED1993903600B67B3D /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
+		19695E0A19BDD03900C05D03 /* Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stripe.h; path = Stripe/Stripe.h; sourceTree = "<group>"; };
+		19695E0B19BDD04C00C05D03 /* STPAPIConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPAPIConnection.h; path = Stripe/STPAPIConnection.h; sourceTree = "<group>"; };
+		19695E0C19BDD04C00C05D03 /* STPAPIConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STPAPIConnection.m; path = Stripe/STPAPIConnection.m; sourceTree = "<group>"; };
+		19695E0D19BDD04C00C05D03 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Stripe/STPCard.h; sourceTree = "<group>"; };
+		19695E0E19BDD04C00C05D03 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STPCard.m; path = Stripe/STPCard.m; sourceTree = "<group>"; };
+		19695E0F19BDD04C00C05D03 /* STPFormEncodeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPFormEncodeProtocol.h; path = Stripe/STPFormEncodeProtocol.h; sourceTree = "<group>"; };
+		19695E1019BDD04C00C05D03 /* STPToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPToken.h; path = Stripe/STPToken.h; sourceTree = "<group>"; };
+		19695E1119BDD04C00C05D03 /* STPToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STPToken.m; path = Stripe/STPToken.m; sourceTree = "<group>"; };
+		19695E1219BDD04C00C05D03 /* STPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPUtils.h; path = Stripe/STPUtils.h; sourceTree = "<group>"; };
+		19695E1319BDD04C00C05D03 /* STPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STPUtils.m; path = Stripe/STPUtils.m; sourceTree = "<group>"; };
+		19695E1419BDD04C00C05D03 /* Stripe-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Stripe-Prefix.pch"; path = "Stripe/Stripe-Prefix.pch"; sourceTree = "<group>"; };
+		19695E1619BDD04C00C05D03 /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stripe.m; path = Stripe/Stripe.m; sourceTree = "<group>"; };
+		19695E1719BDD04C00C05D03 /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StripeError.h; path = Stripe/StripeError.h; sourceTree = "<group>"; };
+		19695E1819BDD04C00C05D03 /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StripeError.m; path = Stripe/StripeError.m; sourceTree = "<group>"; };
 		199AE67E199662820087CC89 /* quantity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quantity.h; sourceTree = "<group>"; };
 		199AE67F199662820087CC89 /* quantity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = quantity.m; sourceTree = "<group>"; };
 		19B3F38719A0A1AA00158D81 /* menuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menuList.h; sourceTree = "<group>"; };
@@ -144,6 +164,27 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		19695E1F19BDEB5900C05D03 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				19695E0B19BDD04C00C05D03 /* STPAPIConnection.h */,
+				19695E0C19BDD04C00C05D03 /* STPAPIConnection.m */,
+				19695E0D19BDD04C00C05D03 /* STPCard.h */,
+				19695E0E19BDD04C00C05D03 /* STPCard.m */,
+				19695E0F19BDD04C00C05D03 /* STPFormEncodeProtocol.h */,
+				19695E1019BDD04C00C05D03 /* STPToken.h */,
+				19695E1119BDD04C00C05D03 /* STPToken.m */,
+				19695E1219BDD04C00C05D03 /* STPUtils.h */,
+				19695E1319BDD04C00C05D03 /* STPUtils.m */,
+				19695E1619BDD04C00C05D03 /* Stripe.m */,
+				19695E1719BDD04C00C05D03 /* StripeError.h */,
+				19695E1819BDD04C00C05D03 /* StripeError.m */,
+				19695E1419BDD04C00C05D03 /* Stripe-Prefix.pch */,
+				19695E0A19BDD03900C05D03 /* Stripe.h */,
+			);
+			name = Stripe;
+			sourceTree = "<group>";
+		};
 		19DA341F196EE8220081D2FF = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +218,7 @@
 		19DA3431196EE8220081D2FF /* Food Application */ = {
 			isa = PBXGroup;
 			children = (
+				19695E1F19BDEB5900C05D03 /* Stripe */,
 				19119FE81993901D00B67B3D /* images */,
 				19DA343D196EE8220081D2FF /* Main.storyboard */,
 				DC21CE48197138A800D29F18 /* WebService.h */,
@@ -363,15 +405,21 @@
 				19E4B0B4197471C6001465BD /* SWRevealViewController.m in Sources */,
 				19DA3465196EEE150081D2FF /* login.m in Sources */,
 				19DA3477196EEEF80081D2FF /* congratulations.m in Sources */,
+				19695E1919BDD04C00C05D03 /* STPAPIConnection.m in Sources */,
 				DC21CE4D19713EFC00D29F18 /* checkInternet.m in Sources */,
 				19DA3468196EEE680081D2FF /* newUser.m in Sources */,
 				19DA3462196EEDD00081D2FF /* countries.m in Sources */,
 				DC21CE4A197138A800D29F18 /* WebService.m in Sources */,
 				19DA3471196EEEC00081D2FF /* payment.m in Sources */,
+				19695E1E19BDD04C00C05D03 /* StripeError.m in Sources */,
+				19695E1A19BDD04C00C05D03 /* STPCard.m in Sources */,
 				19DA346B196EEE830081D2FF /* vendors.m in Sources */,
 				19B3F38919A0A1AA00158D81 /* menuList.m in Sources */,
+				19695E1C19BDD04C00C05D03 /* STPUtils.m in Sources */,
 				19E4B0B7197471EA001465BD /* SidebarViewController.m in Sources */,
 				DC21CE511971451A00D29F18 /* Reachability.m in Sources */,
+				19695E1D19BDD04C00C05D03 /* Stripe.m in Sources */,
+				19695E1B19BDD04C00C05D03 /* STPToken.m in Sources */,
 				19DA3474196EEEDD0081D2FF /* paymentConfirmation.m in Sources */,
 				19DA3438196EE8220081D2FF /* main.m in Sources */,
 			);

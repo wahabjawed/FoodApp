@@ -23,6 +23,11 @@
     NSString *ProductImagePath;
     NSString *product_id;
     UIButton *button;
+    UIActivityIndicatorView *image_loading;
+    NSString * ProductImage;
+    NSURL *VendorImageUrl ;
+    NSData *data ;
+    UIImage *image ;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -37,13 +42,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.product_table.delegate = self;
     self.product_table.dataSource = self;
     
     self.proceed.layer.cornerRadius = 7;
     self.proceed.clipsToBounds = YES;
             
-            [self FetchProductsList];
+    [self FetchProductsList];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -90,50 +96,78 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Items" forIndexPath:indexPath];
+    static NSString *simpleTableIdentifierr = @"Items";
+    UILabel *price;
+    UILabel *prod_name;
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell;
+//    UITableViewCell *cell;
+//    
+//    if (cell == nil) {
+//        cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierr];
+//        
+//    }
+
+    if(cell == nil){
+        cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierr ];
+    
+    product_price = [[AllProductsOfVendor valueForKey:@"product_price"] objectAtIndex:indexPath.row];
+    product_name = [[AllProductsOfVendor valueForKey:@"product_name"] objectAtIndex:indexPath.row];
+    }
+    price = [[UILabel alloc]initWithFrame:CGRectMake(240, 12, 50, 20)];
+    price.textColor = [UIColor blackColor];
+    price.text = product_price;
+    
+    prod_name = [[UILabel alloc]initWithFrame:CGRectMake(65, 12, 170, 20)];
+    prod_name.textColor = [UIColor blackColor];
+    prod_name.text = product_name;
+    
+    [cell addSubview:price];
+    [cell addSubview:prod_name];
+    
+    image_loading = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(20,15,20,20)];
+    [image_loading setColor:[UIColor blackColor]];
+    [cell addSubview:image_loading];
+    
+    [image_loading startAnimating];
     
     dispatch_queue_t myqueue = dispatch_queue_create("myqueue", NULL);
     dispatch_async(myqueue, ^(void) {
         
+        ProductImage = [[AllProductsOfVendor valueForKey:@"product_imageid"] objectAtIndex:indexPath.row];
         
-        NSString * ProductImage = [[AllProductsOfVendor valueForKey:@"product_imageid"] objectAtIndex:indexPath.row];
-        NSLog(@"image name is: %@",ProductImage);
         ProductImagePath = [VENDOR_IMAGE_DIR stringByAppendingString:ProductImage];
-        NSLog(@"image path is %@",ProductImagePath);
-        NSURL *VendorImageUrl = [NSURL URLWithString:ProductImagePath];
-        NSData *data = [[NSData alloc]initWithContentsOfURL:VendorImageUrl];
-        UIImage *image = [[UIImage alloc]initWithData:data];
-        
-        product_price = [[AllProductsOfVendor valueForKey:@"product_price"] objectAtIndex:indexPath.row];
-        product_name = [[AllProductsOfVendor valueForKey:@"product_name"] objectAtIndex:indexPath.row];
+
+        VendorImageUrl = [NSURL URLWithString:ProductImagePath];
+        data = [[NSData alloc]initWithContentsOfURL:VendorImageUrl];
+        image = [[UIImage alloc]initWithData:data];
         
         button = [[UIButton alloc]init];
         //[button addTarget:self action:@selector(menuClicked:) forControlEvents:UIControlEventTouchUpInside];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update UI on main queue
-            UILabel *price = [[UILabel alloc]initWithFrame:CGRectMake(240, 12, 50, 20)];
-            price.textColor = [UIColor blackColor];
-            price.text = product_price;
-            
-            UILabel *prod_name = [[UILabel alloc]initWithFrame:CGRectMake(65, 12, 170, 20)];
-            prod_name.textColor = [UIColor blackColor];
-            prod_name.text = product_name;
             
             [button setBackgroundImage:image forState:UIControlStateNormal];
             button.frame = CGRectMake(10,5,50,34);
             //button.tag = value;
-            [cell addSubview:price];
-            [cell addSubview:prod_name];
+            
             [cell addSubview:button];
+            [image_loading stopAnimating];
 
             // here, spinner for that image view will be removed.
             
         });
         
     });
+    
+    
+    if ([cell.contentView subviews]){
+        for (UIView *subview in [cell.contentView subviews]) {
+            [subview removeFromSuperview];
+        }
+    }
     return cell;
 }
-
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
@@ -145,9 +179,13 @@
         
         product_price = [[AllProductsOfVendor valueForKey:@"product_price"] objectAtIndex:indexPath.row];
         product_name = [[AllProductsOfVendor valueForKey:@"product_name"] objectAtIndex:indexPath.row];
+        product_id = [[AllProductsOfVendor valueForKey:@"product_vendorid"] objectAtIndex:indexPath.row];
         
         q.prod_name = product_name;
         q.prod_price = product_price;
+        q.prod_vendor_id = self.vendorId;
+        q.prod_item_id = product_id;
+        
     }
     
 }
@@ -159,53 +197,4 @@
     return  AllProductsOfVendor;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 @end

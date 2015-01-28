@@ -10,7 +10,7 @@
 
 @implementation WebService
 
--(NSArray*)FilePath:(NSString*)filepath parameterOne:(NSString*)parameterOne parameterTwo:(NSString*)parameterTwo parameterThree:(NSString*)parameterThree
+-(NSArray*)FilePath:(NSString*)filepath parameterOne:(NSString*)parameterOne parameterTwo:(NSString*)parameterTwo parameterThree:(NSString*)parameterThree parameterFour:(NSString*)parameterFour
 {
     NSURL *jsonFileUrl = [NSURL URLWithString:filepath];
     
@@ -18,8 +18,7 @@
     
     //NSString * storedsession = [[NSUserDefaults standardUserDefaults] stringForKey:@"college"];
     
-    
-    NSString *myRequestString = [NSString stringWithFormat:@"parameterOne=%@&parameterTwo=%@&parameterThree=%@&session=%@",parameterOne,parameterTwo,parameterThree,@"storedsession"];
+    NSString *myRequestString = [NSString stringWithFormat:@"parameterOne=%@&parameterTwo=%@&parameterThree=%@&parameterFour=%@&session=%@",parameterOne,parameterTwo,parameterThree,parameterFour,@"storedsession"];
     
     // Create Data from request
     NSData *myRequestData = [NSData dataWithBytes: [myRequestString UTF8String] length: [myRequestString length]];
@@ -50,19 +49,43 @@
 -(NSArray*)FilePath:(NSString*)filepath parameterOne:(NSString*)parameterOne
 {
     
-    NSArray *responseArray = [self FilePath:filepath parameterOne:parameterOne parameterTwo:nil parameterThree:nil];
+    NSArray *responseArray = [self FilePath:filepath parameterOne:parameterOne parameterTwo:nil parameterThree:nil parameterFour:nil];
     return responseArray;
 }
 
 -(NSArray*)FilePath:(NSString*)filepath parameterOne:(NSString*)parameterOne parameterTwo:(NSString*)parameterTwo
 {
-    NSArray * responseArray = [self FilePath:filepath parameterOne:parameterOne parameterTwo:parameterTwo parameterThree:nil];
+    NSArray * responseArray = [self FilePath:filepath parameterOne:parameterOne parameterTwo:parameterTwo parameterThree:nil parameterFour:nil];
+    return responseArray;
+}
+
+-(NSArray*)FilePath:(NSString*)filepath parameterOne:(NSString*)parameterOne parameterTwo:(NSString*)parameterTwo parameterThree:(NSString*)parameterThree
+{
+    NSArray * responseArray = [self FilePath:filepath parameterOne:parameterOne parameterTwo:parameterTwo parameterThree:parameterThree parameterFour:nil];
     return responseArray;
 }
 -(NSArray*)FilePath:(NSString*)filepath
 {
     NSArray *responseArray = [self FilePath:filepath parameterOne:nil parameterTwo:nil parameterThree:nil];
     return responseArray;
+}
+
+-(NSString *)convertingArrayIntoJsonString: (NSMutableArray *) arrayOne{
+    NSError *error = nil;
+    NSString *jsonString;
+    NSData *jsonData = [NSJSONSerialization
+                        dataWithJSONObject:arrayOne
+                        options:NSJSONWritingPrettyPrinted
+                        error:&error];
+    if ([jsonData length] > 0 &&
+        error == nil)
+    {
+        //NSLog(@"Successfully serialized the dictionary into data = %@", jsonData);
+        jsonString = [[NSString alloc] initWithData:jsonData
+                                                     encoding:NSUTF8StringEncoding];
+        
+    }
+    return jsonString;
 }
 
 @end

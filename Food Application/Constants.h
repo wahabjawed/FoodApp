@@ -16,5 +16,7 @@
 #define VENDOR_IMAGE_DIR @"http://www.fajjemobile.info/iosfoodapplication/dashboard/UploadedImages/"
 #define PRODUCT_TYPES @"productType.php"
 #define ALLPRODUCTS_VENDOR @"ProductList_Vendor.php"
+#define TRANSACTION @"transaction.php"
+#define STRIPE @"http://fajjemobile.info/iosfoodapplication/stripe/Stripe.php"
 
 #endif

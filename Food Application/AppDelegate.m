@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "menu.h"
+#import "Stripe.h"
+
+NSString * const StripePublishableKey = @"pk_test_4aZGrvpQMLXfIobQl9vvfKEb";
+
 
 @implementation AppDelegate
 
@@ -15,6 +18,7 @@
 {
     // Override point for customization after application launch.
    
+    [Stripe setDefaultPublishableKey:StripePublishableKey];
     return YES;
 }
 
@@ -45,5 +49,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

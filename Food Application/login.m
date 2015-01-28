@@ -10,8 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "WebService.h"
 #import "Constants.h"
+#import "vendors.h"
 
-@interface login ()
+@interface login (){
+    UIAlertView *alert;
+}
 
 @end
 
@@ -67,6 +70,14 @@
     NSString *email = [[self login_email] text];
     NSString *password = [[self login_password] text];
     
+    if([self.login_email.text isEqualToString:@""] ||[self.login_password.text isEqualToString:@""]) {
+        // There's no text in the box.
+        
+        alert = [[UIAlertView alloc]initWithTitle:@"Incomplete Information" message:@" Please Fill the fields first." delegate:self cancelButtonTitle:Nil otherButtonTitles:@"OK", nil];
+        [alert show];
+
+    }
+    else{
     NSMutableDictionary *loginJsonPost = [[NSMutableDictionary alloc] init];
     [loginJsonPost setValue:email forKey:@"email"];
     [loginJsonPost setValue:password forKey:@"password"];
@@ -85,10 +96,21 @@
     {
         NSString *LoginJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         WebService *loginRest = [[WebService alloc] init];
-        [loginRest FilePath:BASEURL LOGIN parameterOne:LoginJson];
-    }
+        NSArray *result = [loginRest FilePath:BASEURL LOGIN parameterOne:LoginJson];
+        
+        if([[result valueForKey:@"success"] isEqualToString:@"OK"]){
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"reveal_time"];
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:vc animated:YES completion:NULL];
 
-    
+        }
+        else{
+            alert = [[UIAlertView alloc]initWithTitle:@"Wrong Credentials" message:@"You have entered wrong email or password." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }
+    }
 }
 
 - (IBAction)CreateNewUser:(id)sender {

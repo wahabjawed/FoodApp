@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface quantity : UIViewController{
-    int final;
-    int basic;
+    double final;
+    double basic;
     int quant;
     NSString *quanti;
     NSString *quantit;
@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *quan;
 @property (strong,nonatomic) NSString *prod_name;
 @property (strong,nonatomic) NSString *prod_price;
+@property (strong,nonatomic) NSString *prod_vendor_id;
+@property (strong,nonatomic) NSString *prod_item_id;
 @property (weak, nonatomic) IBOutlet UIButton *basket;
 
 +(NSMutableArray*) myBasketArray;

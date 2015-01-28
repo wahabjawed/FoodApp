@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *proceed;
 
 @property (weak,nonatomic) NSString *vendorId;
+
 @end

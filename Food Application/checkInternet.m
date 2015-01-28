@@ -14,7 +14,6 @@
 BOOL alertTime= YES;
 @implementation checkInternet
 
-
 UIAlertView *alertbox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -123,6 +122,7 @@ UIAlertView *alertbox;
 //    }
 //    
 //}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {

@@ -35,7 +35,7 @@
     WebService *AllProductTypeRest = [[WebService alloc] init];
     NSArray *productTypes = [AllProductTypeRest FilePath:BASEURL PRODUCT_TYPES];
     _menuItems = [[NSMutableArray alloc] initWithArray:productTypes];
-    [_menuItems insertObject:@"Resturants" atIndex:0];
+    [_menuItems insertObject:@"All Resturants" atIndex:0];
        
 }
 
